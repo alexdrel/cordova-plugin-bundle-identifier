@@ -4,36 +4,53 @@
         id="com.wunwun.plugins.bundle-identifier"
         version="1.0.0">
 
-    <name>BundleIdentifier</name>
-    <author>Calvin Lai</author>
-    <description>Simple Cordova (3.0) plugin to retrieve the Bundle ID for an iOS application.</description>
+  <name>BundleIdentifier</name>
+  <author>Calvin Lai</author>
+  <description>Simple Cordova (3.0) plugin to retrieve the Bundle ID for an iOS application.</description>
+
+  <!--<js-module src="www/bundle-identifier.js" name="BundleIdentifier">
+    <clobbers target="window.bundleIdentifier" />
+  </js-module>-->
+
+  <!-- android -->
+  <platform name="android">
 
     <js-module src="www/bundle-identifier.js" name="BundleIdentifier">
-        <clobbers target="window.bundleIdentifier" />
+      <clobbers target="window.bundleIdentifier" />
     </js-module>
+    
 
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="BundleIdentifier">
-                <param name="android-package" value="com.wunwun.plugins.bundleidentifier.BundleIdentifier"/>
-            </feature>
-        </config-file>
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="BundleIdentifier">
+        <param name="android-package" value="com.wunwun.plugins.bundleidentifier.BundleIdentifier"/>
+      </feature>
+    </config-file>
 
-        <source-file src="src/android/BundleIdentifier.java" target-dir="src/com/wunwun/plugins/bundleidentifier" />
-    </platform>
+    <source-file src="src/android/BundleIdentifier.java" target-dir="src/com/wunwun/plugins/bundleidentifier" />
+  </platform>
 
-    <!-- ios -->
-    <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature name="BundleIdentifier">
-                <param name="ios-package" value="BundleIdentifier" />
-            </feature>
-        </config-file>
-        <header-file src="src/ios/BundleIdentifier.h" />
-        <source-file src="src/ios/BundleIdentifier.m" />
-    </platform>
+  <!-- ios -->
+  <platform name="ios">
 
+    <js-module src="www/bundle-identifier.js" name="BundleIdentifier">
+      <clobbers target="window.bundleIdentifier" />
+    </js-module>
+    
+    <config-file target="config.xml" parent="/*">
+      <feature name="BundleIdentifier">
+        <param name="ios-package" value="BundleIdentifier" />
+      </feature>
+    </config-file>
+    <header-file src="src/ios/BundleIdentifier.h" />
+    <source-file src="src/ios/BundleIdentifier.m" />
+  </platform>
 
+  <!--windows-->
+  <platform name="windows">
+    <js-module src="src/windows/bundleIdentifier.js" name="BundleIdentifier">
+      <clobbers target="window.bundleIdentifier" />
+      <merges target="" />
+    </js-module>
+  </platform>
 
 </plugin>
